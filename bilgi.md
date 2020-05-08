@@ -16,5 +16,5 @@ git push -u origin master
 git checkout -b newBranch
 
 git commit -m “Yeni Branch Eklendi”
-      
+
 git push origin newBranch
