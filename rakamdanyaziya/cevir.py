@@ -2,9 +2,6 @@ import cevirici
 
 rakam = input("Rakam giriniz : ")
 
-if rakam.find(",") == -1 or rakam.find(".") == -1:
-    rakam = rakam+".00"
-
 if rakam.find(",") != -1:
     a = rakam.split(',')
 else:
