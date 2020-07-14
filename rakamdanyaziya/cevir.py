@@ -1,6 +1,6 @@
 import cevirici
 
-rakam = input("Rakam giriniz : ")
+rakam = input("Rakamı giriniz : ")
 
 if rakam.find(",") != -1:
     a = rakam.split(',')
