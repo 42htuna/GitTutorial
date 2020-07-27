@@ -1,15 +1,20 @@
 import cevirici
 
 rakam = input("Rakamı giriniz : ")
-
-if rakam.find(",") == -1 or rakam.find(".") == -1:
-    rakam = rakam+".00"
-
+   
 if rakam.find(",") != -1:
     a = rakam.split(',')
-else:
+
+elif rakam.find(".") != -1:
     a = rakam.split('.')
-   
+    
+else:
+    rakam = rakam+".00"
+    a = rakam.split('.')
+
+if len(a[1])%2 == 1:
+    a[1] = a[1]+"0"
+
 lira = cevirici.Cevirici(a[0][:36]).yaz
 kurus = cevirici.Cevirici(a[1][:2]).yaz
 
