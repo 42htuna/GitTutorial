@@ -9,6 +9,8 @@ elif rakam.find(".") != -1:
     a = rakam.split('.')
     
 else:
+    if rakam == "":
+        rakam = "0"
     rakam = rakam+".00"
     a = rakam.split('.')
 
