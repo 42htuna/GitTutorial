@@ -150,4 +150,3 @@ def oyunAlani():
             print("oyun bitti")
             quit()
 oyunAlani()
-

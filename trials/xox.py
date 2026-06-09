@@ -88,4 +88,3 @@ while True:
 	if len(x_durumu) + len(o_durumu) == 9:
 		print("oyun bitti")
 		sys.exit()
-

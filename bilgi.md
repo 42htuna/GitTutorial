@@ -55,4 +55,3 @@ import readline
 
 readline.clear_history()
 ```
-
