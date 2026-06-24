@@ -1,41 +1,39 @@
-from pytube import YouTube
+from yt_dlp import YoutubeDL
 
 link = input("Link : ")
-yt = YouTube(link)
 
-#Showing details
-print("Title: ", yt.title)
-print("Author: ", yt.author)
-print("Published date: ", yt.publish_date.strftime("%Y-%m-%d"))
-print("Number of views: ", yt.views)
-print("Length of video: ", yt.length, "seconds")
-print("Point: ",yt.rating)
-print("Description: ", yt.description)
+ydl_opts = {
+    'noplaylist': True,
+    'outtmpl': 'downloads/%(title)s.%(ext)s',
+    'http_headers': {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    },
+    'extractor_args': {
+        'youtube': {
+            'player_client': ['android', 'web'],
+            'skip': ['dash', 'hls']
+        }
+    },
+}
 
-#print all the available streams
-for stream in yt.streams:
-      print(stream)
+with YoutubeDL(ydl_opts) as ydl:
+    yt = ydl.extract_info(link, download=False)
 
-#print filtered streams
-#print(yt.streams.filter(only_audio=True))
-#print(yt.streams.filter(only_video=True))
+print("Title: ", yt.get('title'))
+print("Author: ", yt.get('uploader'))
+print("Published date: ", yt.get('upload_date'))
+print("Number of views: ", yt.get('view_count'))
+print("Length of video: ", yt.get('duration'), "seconds")
+print("Point: ", yt.get('like_count'))
+print("Description: ", yt.get('description', '')[:100] + "...")
 
-#download video only
-#yt.streams.filter(res='1080p', progressive=False).first().download(filename='video.mp4')
-
-#download audio only
-#yt.streams.filter(abr='160kbps', progressive=False).first().download(filename='audio.mp3')
-
-#download filtered stream
-#yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first().download()
-
-#download first stream to a folder
-#video = yt.streams.first()
-#video.download("/home/<USER>/Downloads")
-
-yt.streams.filter(abr='160kbps', progressive=False).first().download(filename=yt.title+'.m3u')
-print("Audio downloading...")
-video = yt.streams.get_highest_resolution()
 print("Video downloading...")
-video.download()
-print("Video successfullly downloaded from", link)
+ydl_opts['format'] = 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'
+
+try:
+    with YoutubeDL(ydl_opts) as ydl:
+        ydl.download([link])
+except Exception as e:
+    print(f"Bir hata oluştu: {e}")
+
+print("Video successfully downloaded from", link)
