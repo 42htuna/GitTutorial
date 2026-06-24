@@ -6,7 +6,7 @@ def mp4_indir(video_url):
         'noplaylist': True,
         
         'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
-        'outtmpl': 'downloads/%(title)s.mp4',
+        'outtmpl': 'mp4/%(title)s.mp4',
         
         'http_headers': {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
