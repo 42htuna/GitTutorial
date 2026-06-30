@@ -1,11 +1,13 @@
 # GitTutorial
 
 Gereksinimleri kurma
-'''bash
+
+```bash
 pip install -r requirements.txt
-'''
+```
 
 Rakamdan yazıya çevirme
+
 ```bash
 python cevir.py
 ```
