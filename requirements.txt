@@ -1,0 +1,5 @@
+base58==2.1.1
+matplotlib==3.11.0
+numpy==2.5.0
+passlib==1.7.4
+yt-dlp==2026.6.9
