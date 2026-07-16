@@ -1,4 +1,6 @@
-fastapi==0.110.0
-uvicorn==0.28.0
-textblob==0.18.0.post0
 deep-translator==1.11.4
+fastapi==0.139.2
+pydantic-core==2.46.4
+textblob==0.20.0
+uvicorn==0.51.0
+
