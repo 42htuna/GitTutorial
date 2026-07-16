@@ -1,0 +1,12 @@
+services:
+  yz-service:
+    image: yz:latest
+    container_name: yz
+    build: .
+    restart: unless-stopped
+    ports:
+      - "8082:8000"
+    volumes:
+      - ./app:/code/app
+    environment:
+      - ENV=development
