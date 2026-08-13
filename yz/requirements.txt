@@ -2,5 +2,5 @@ deep-translator==1.11.4
 fastapi==0.141.1
 pydantic-core==2.46.4
 textblob==0.20.1
-uvicorn==0.52.1
+uvicorn==0.52.3
 
